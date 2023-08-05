@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('post_id');
+            //$table->foreign('post_id')->references('id')->on('posts');
+            $table->foreignId('post_id')->constrained('posts');
+            $table->string('comment');
             $table->integer('comment_count');
             $table->integer('like_count');
             $table->unsignedBigInteger('comment_created_by')->default(0);
