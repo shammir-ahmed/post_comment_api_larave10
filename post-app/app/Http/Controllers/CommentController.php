@@ -22,7 +22,7 @@ class CommentController extends Controller
             $comments = $comments->where('author', 'LIKE', '%.$author.%');
         }
 
-        $boocommentsks = $comments->get();
+        $comments = $comments->get();
 
         return JsonResource::collection($comments);
     }
@@ -57,9 +57,12 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(CommentFormRequest $request, Comment $comment)
     {
-        //
+        $comment->fill($request->validated());
+        $comment->save(); // true or false
+
+        return new JsonResource($comment);
     }
 
     /**
@@ -67,6 +70,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return response()->json([], 204);
     }
 }

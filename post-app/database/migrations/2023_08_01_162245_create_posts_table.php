@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('sulg');
-            $table->string('image')->nullable();
+            $table->string('sulg')->nullable();
+            $table->json('image')->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('created_by')->default(0);
             $table->unsignedBigInteger('up_by')->default(0);

@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+
+    protected $fillable = [
+        'title', 'status'
+    ];
+
+    protected $guarded = [];
 }

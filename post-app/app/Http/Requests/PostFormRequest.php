@@ -22,7 +22,12 @@ class PostFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+                'title' => ['required', 'min:3'],
+                'sulg' => ['nullable'],
+                'image' => ['nullable'],
+                'image' => ['nullable'],
+                'description' => ['nullable'],
+                'status' => ['required']
         ];
     }
 }
